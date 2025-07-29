@@ -1,23 +1,29 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
+name: call-action
+description: Calls Github Actions Workflow via REST API
+author: aditor
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: heart
+  icon: arrow-right-circle
   color: red
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: Your input description here
+  github-url:
+    description: GitHub Instance url
+    default: 'https://github.com'
+  github-token:
+    description: GitHub Token
+  workflows-to-call:
+    description: JSON with workflows links and payloads to call
     required: true
-    default: '1000'
 
 # Define your outputs here.
 outputs:
-  time:
-    description: Your output description here
+  report:
+    description: The run report of the action
+  called-workflows:
+    description: The list of called workflows with result
 
 runs:
   using: node20
