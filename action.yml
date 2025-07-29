@@ -18,13 +18,6 @@ inputs:
     description: JSON with workflows links and payloads to call
     required: true
 
-# Define your outputs here.
-outputs:
-  report:
-    description: The run report of the action
-  called-workflows:
-    description: The list of called workflows with result
-
 runs:
   using: node20
   main: dist/index.js

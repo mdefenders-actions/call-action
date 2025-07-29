@@ -15,7 +15,7 @@ help: ## This help.
 install: ## Install dependencies
 	npm install
 run: ## Run the action code
-	npx local-action . src/main.ts
+	npx local-action . src/main.ts .env
 build: ## Build the Dist JS
 	npm run bundle
 test: ## Run the tests

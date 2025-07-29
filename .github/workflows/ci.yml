@@ -57,8 +57,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
-
-      - name: Print Output
-        id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          workflows-to-call:
+            '{"owner/repo": {"yaml": "workflow.yaml", "ref": "main", "data":
+            {"foo": "bar"}}}'
