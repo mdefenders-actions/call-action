@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
-import { wait } from './wait.js'
+// import {generatedMarkdownTable} from './markDown.js'
+// import {callWorkflow} from './callWorkflow.js'
 
 /**
  * The main function for the action.
@@ -7,6 +8,16 @@ import { wait } from './wait.js'
  * @returns Resolves when the action is complete.
  */
 export async function run(): Promise<void> {
+//     try {
+//         const input = core.getInput('workflows-to-call', {required: true})
+//         // for (const [key, value] of Object.entries(input)) {
+//         //     core.info(`Key: ${key}, Value: ${JSON.stringify(value)}`)
+//         // }
+//         core.info(`Input workflows-to-call: ${input}`)
+//     } catch (error) {
+//         if (error instanceof Error) core.setFailed(error.message)
+//     }
+// }
   try {
     const ms: string = core.getInput('milliseconds')
 
@@ -15,7 +26,6 @@ export async function run(): Promise<void> {
 
     // Log the current timestamp, wait, then log the new timestamp
     core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
     core.debug(new Date().toTimeString())
 
     // Set outputs for other workflow steps to use
