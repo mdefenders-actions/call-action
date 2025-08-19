@@ -28,11 +28,11 @@ Use the following as an example of how to structure your unit tests:
  */
 import { jest } from '@jest/globals'
 import * as core from '../__fixtures__/core.js'
-import { wait } from '../__fixtures__/wait.js'
+import { workflowMap } from '../__fixtures__/workflowMap.js'
 
 // Mocks should be declared before the module being tested is imported.
 jest.unstable_mockModule('@actions/core', () => core)
-jest.unstable_mockModule('../src/wait.js', () => ({ wait }))
+jest.unstable_mockModule('../src/workflowMap.js', () => ({ workflowMap }))
 
 // The module being tested should be imported dynamically. This ensures that the
 // mocks are used in place of any actual dependencies.
@@ -43,8 +43,8 @@ describe('main.ts', () => {
     // Set the action's inputs as return values from core.getInput().
     core.getInput.mockImplementation(() => '500')
 
-    // Mock the wait function so that it does not actually wait.
-    wait.mockImplementation(() => Promise.resolve('done!'))
+    // Mock the workflowMap function so that it does not actually workflowMap.
+    workflowMap.mockImplementation(() => Promise.resolve('done!'))
   })
 
   afterEach(() => {
@@ -67,8 +67,8 @@ describe('main.ts', () => {
     // Clear the getInput mock and return an invalid value.
     core.getInput.mockClear().mockReturnValueOnce('this is not a number')
 
-    // Clear the wait mock and return a rejected promise.
-    wait
+    // Clear the workflowMap mock and return a rejected promise.
+    workflowMap
       .mockClear()
       .mockRejectedValueOnce(new Error('milliseconds is not a number'))
 
