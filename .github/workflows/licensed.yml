@@ -16,11 +16,6 @@ on:
   #     - main
   workflow_dispatch:
 
-paths-ignore:
-  - node_modules
-  - dist
-  - README.md
-
 permissions:
   contents: write
 
