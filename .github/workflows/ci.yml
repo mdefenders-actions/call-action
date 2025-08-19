@@ -59,5 +59,20 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           workflows-to-call:
-            '{"owner/repo": {"yaml": "workflow.yaml", "ref": "main", "data":
-            {"foo": "bar"}}}'
+            '{
+              "mdefenders/it-delivers-everywhere-gitops": {
+                "yaml": "cd-update-gitops.yaml",
+                "ref": "main",
+                "data": {
+                  "gitops-branch": "main",
+                  "new-tag": "0.0.1",
+                  "gitops-file": "test/manifest.yaml",
+                  "environment": "production",
+                  "image": "ghcr.io/mdefenders/app:0.0.1",
+                  "app": "my-app-back",
+                  "replicas": "3",
+                  "rollback": "false",
+                  "dry-run": "false"
+                }
+              }
+            }'
