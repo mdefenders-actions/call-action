@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: '31 7 * * 3'
 
+paths-ignore:
+  - node_modules
+  - dist
+  - README.md
+
 permissions:
   actions: read
   checks: write

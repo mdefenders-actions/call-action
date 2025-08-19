@@ -13,6 +13,11 @@ on:
     branches:
       - main
 
+paths-ignore:
+  - node_modules
+  - dist
+  - README.md
+
 permissions:
   contents: read
   packages: read

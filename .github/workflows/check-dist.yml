@@ -20,6 +20,11 @@ on:
 permissions:
   contents: read
 
+paths-ignore:
+  - node_modules
+  - dist
+  - README.md
+  -
 jobs:
   check-dist:
     name: Check dist/
