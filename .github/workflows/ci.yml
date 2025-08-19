@@ -52,7 +52,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.MDEFENDERS_GITHUB_TOKEN }}
           workflows-to-call:
             '{ "mdefenders/it-delivers-everywhere-gitops": { "yaml":
             "cd-update-gitops.yaml", "ref": "main", "data": { "gitops-branch":
