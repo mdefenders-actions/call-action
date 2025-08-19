@@ -12,10 +12,12 @@ export async function run(): Promise<void> {
   try {
     core.startGroup('Iterating over workflows to call')
     const workflowMap = await getWorkflowMapFromInput()
+    await core.summary.addRaw(`### Call Workflows Report`, true).write()
+    const gitHubURL = core.getInput('github-url')
 
     for (const [repo, value] of Object.entries(workflowMap)) {
       await callWorkflow(repo, value)
-      const summaryReport = `- called workflow ${value.yaml} for ${repo} with ${JSON.stringify(value.data)}`
+      const summaryReport = `- called Workflow [${repo}](${gitHubURL}/${repo}/actions/workflows/${value.yaml})`
       await core.summary.addRaw(summaryReport, true).write()
     }
     core.endGroup()
