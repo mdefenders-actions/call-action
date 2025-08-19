@@ -31327,6 +31327,8 @@ async function run() {
         const workflowMap = await getWorkflowMapFromInput();
         for (const [repo, value] of Object.entries(workflowMap)) {
             await callWorkflow(repo, value);
+            const summaryReport = `- called workflow ${value.yaml} for ${repo} with ${JSON.stringify(value.data)}`;
+            await coreExports.summary.addRaw(summaryReport, true).write();
         }
         coreExports.endGroup();
     }

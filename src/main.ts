@@ -15,6 +15,8 @@ export async function run(): Promise<void> {
 
     for (const [repo, value] of Object.entries(workflowMap)) {
       await callWorkflow(repo, value)
+      const summaryReport = `- called workflow ${value.yaml} for ${repo} with ${JSON.stringify(value.data)}`
+      await core.summary.addRaw(summaryReport, true).write()
     }
     core.endGroup()
   } catch (error: unknown) {
