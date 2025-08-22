@@ -31325,8 +31325,12 @@ async function run() {
     try {
         coreExports.startGroup('Iterating over workflows to call');
         const workflowMap = await getWorkflowMapFromInput();
+        await coreExports.summary.addRaw(`### Call Workflows Report`, true).write();
+        const gitHubURL = coreExports.getInput('github-url');
         for (const [repo, value] of Object.entries(workflowMap)) {
             await callWorkflow(repo, value);
+            const summaryReport = `- called Workflow [${repo}](${gitHubURL}/${repo}/actions/workflows/${value.yaml})`;
+            await coreExports.summary.addRaw(summaryReport, true).write();
         }
         coreExports.endGroup();
     }
